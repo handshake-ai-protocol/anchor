@@ -1,0 +1,23 @@
+[project]
+name = "handshake-anchor"
+version = "0.1.0"
+description = "Handshake AI BlockchainAnchorProvider — Bitcoin OP_RETURN and Ethereum log implementations of tree-head anchoring for Sovereign-tier customers."
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.27",
+    "pydantic>=2.7",
+    "structlog>=24.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0", "pytest-asyncio>=0.23"]
+
+[project.scripts]
+handshake-anchor = "handshake_anchor.cli:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
