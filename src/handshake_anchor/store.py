@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 """Tenant-scoped JSON store for :class:`AnchorRecord` rows.
 
 We deliberately do NOT add a Postgres table in Phase 8 — the

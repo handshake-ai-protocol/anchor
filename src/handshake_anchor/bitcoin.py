@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 """``BitcoinOPReturn`` — anchor a tree-head digest as OP_RETURN data.
 
 OP_RETURN is the documented Bitcoin opcode for embedding up to 80

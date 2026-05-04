@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 """``EthereumLog`` — anchor a tree-head digest as a contract event.
 
 Ethereum's ``LOG`` opcode lets a contract emit indexed events

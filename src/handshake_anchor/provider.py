@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 """``BlockchainAnchorProvider`` Protocol + shared data types.
 
 Each provider implementation takes a signed Registry tree-head

@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 """``handshake-anchor`` — BYO blockchain anchor providers.
 
 The :class:`~handshake_anchor.provider.BlockchainAnchorProvider`

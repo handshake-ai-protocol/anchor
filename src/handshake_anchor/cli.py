@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 """``handshake-anchor`` CLI — anchor the latest tree-head.
 
 Documented as the surface a Sovereign-tier customer wires into a

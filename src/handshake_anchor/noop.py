@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 """``NoopAnchor`` — default provider for non-Sovereign tenants.
 
 Records what *would* have been anchored without making a network
