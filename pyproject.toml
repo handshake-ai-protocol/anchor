@@ -1,6 +1,6 @@
 [project]
 name = "handshake-anchor"
-version = "0.2.4"
+version = "0.2.3"
 description = "Handshake AI BlockchainAnchorProvider — Bitcoin OP_RETURN and Ethereum log implementations of tree-head anchoring for Sovereign-tier customers."
 requires-python = ">=3.12"
 dependencies = [
