@@ -84,8 +84,16 @@ class EthereumLog(BlockchainAnchorProvider):
         if not raw_hex:
             raise RuntimeError(
                 "EthereumLog LIVE mode requires ETH_RAW_TX_HEX "
-                "(pre-signed tx hex from caller's keystore); see "
-                "docs/integrations/byo_anchor.md for the wallet flow."
+                "(a pre-signed Ethereum transaction in hex form). "
+                "Construct it with your own keystore — e.g. ethers.js "
+                "`wallet.signTransaction`, web3.py "
+                "`account.sign_transaction`, or any HSM- or "
+                "hardware-wallet signing flow. The transaction should "
+                "call your deployed `HandshakeAnchor` contract's "
+                "`anchor(bytes32 digest)` method on the network this "
+                "provider was constructed for. This provider never "
+                "holds a private key; it only relays the signed "
+                "payload via `eth_sendRawTransaction`."
             )
         if not raw_hex.startswith("0x"):
             raw_hex = "0x" + raw_hex

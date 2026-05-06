@@ -22,7 +22,7 @@ Two modes:
 
 The rationale for the "caller signs the tx, provider only
 broadcasts" split: holding a funded Bitcoin private key inside a
-multi-tenant Replit deployment would itself be a compliance
+multi-tenant cloud deployment would itself be a compliance
 finding. Sovereign customers run their own keystore; the provider
 only needs the broadcast endpoint.
 
@@ -92,8 +92,14 @@ class BitcoinOPReturn(BlockchainAnchorProvider):
         if not raw_hex:
             raise RuntimeError(
                 "BitcoinOPReturn LIVE mode requires BTC_RAW_TX_HEX "
-                "(pre-signed tx hex from caller's keystore); see "
-                "docs/integrations/byo_anchor.md for the wallet flow."
+                "(a pre-signed Bitcoin transaction in hex form). "
+                "Construct it with your own keystore — e.g. Bitcoin "
+                "Core's `createrawtransaction` + "
+                "`signrawtransactionwithwallet` against a funded wallet, "
+                "or any HSM- or hardware-wallet signing flow. This "
+                "provider intentionally never holds a private key; it "
+                "only broadcasts the hex you supply to the configured "
+                "Blockstream-compatible REST endpoint."
             )
         async with httpx.AsyncClient(timeout=30.0) as client:
             resp = await client.post(

@@ -4,9 +4,9 @@
 Documented as the surface a Sovereign-tier customer wires into a
 60-minute cron job. The loop is intentionally one-shot (no
 ``while True``) so the operator can choose between cron, systemd
-timer, Replit Scheduled deployment, or external orchestrators —
-each scheduling layer is the customer's choice. The README's
-"BYO anchor" section has the cron one-liner.
+timer, a cloud scheduler (Cloud Scheduler, EventBridge, etc.), or
+external orchestrators — each scheduling layer is the customer's
+choice. The README's "BYO anchor" section has the cron one-liner.
 
 Flow per invocation:
 
@@ -31,7 +31,6 @@ from __future__ import annotations
 
 import argparse
 import asyncio
-import hashlib
 import os
 import sys
 import time
@@ -52,13 +51,7 @@ from .store import AnchorStore
 
 
 def _admin_token() -> str:
-    tok = os.environ.get("HANDSHAKE_ADMIN_TOKEN", "")
-    if tok:
-        return tok
-    repl = os.environ.get("REPL_ID", "")
-    if not repl:
-        return ""
-    return hashlib.sha256(f"handshake-admin::{repl}".encode()).hexdigest()
+    return os.environ.get("HANDSHAKE_ADMIN_TOKEN", "")
 
 
 def _make_provider(name: str, mode: str, network: str) -> BlockchainAnchorProvider:
